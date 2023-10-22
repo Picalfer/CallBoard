@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CallBoard</string>
     <!-- Menu Drawer Strings -->
-    <string name="ad_cat">Объявление</string>
+    <string name="ad_cat">Объявления</string>
     <string name="ad_my_ads">Мои объявления</string>
     <string name="ad_car">Машины</string>
     <string name="ad_pc">Компьютеры</string>
