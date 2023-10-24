@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.landfathich.callboard" />
+                  <option name="mobileSdkAppId" value="1:785976875343:android:aba66a3c74ca79a3584d3a" />
+                  <option name="projectId" value="callboard-73447" />
+                  <option name="projectNumber" value="785976875343" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
