@@ -13,6 +13,7 @@ class AccountHelper(activity: MainActivity) {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         sendEmailVerification(task.result.user!!)
+                        activity.uiUpdate(task.result.user)
                     } else {
                         Toast.makeText(
                             activity,

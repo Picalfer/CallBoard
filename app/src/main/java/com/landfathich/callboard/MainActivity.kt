@@ -2,12 +2,14 @@ package com.landfathich.callboard
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.landfathich.callboard.databinding.ActivityMainBinding
 import com.landfathich.callboard.dialoghelper.DialogConst
 import com.landfathich.callboard.dialoghelper.DialogHelper
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private val dialogHelper = DialogHelper(this)
     val myAuth = FirebaseAuth.getInstance()
+    private lateinit var tvAccount: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +26,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         init()
     }
 
+    override fun onStart() {
+        super.onStart()
+        uiUpdate(myAuth.currentUser)
+    }
+
     private fun init() {
+        tvAccount = binding.navView.getHeaderView(0).findViewById(R.id.tv_account_email)
+
         val toggle = ActionBarDrawerToggle(
             this,
             binding.drawerLayout,
@@ -68,11 +78,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.sign_out -> {
-                Toast.makeText(this, "Выбрано выход", Toast.LENGTH_SHORT).show()
+                myAuth.signOut()
+                uiUpdate(null)
             }
         }
 
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun uiUpdate(user: FirebaseUser?) {
+        tvAccount.text = if (user == null) getString(R.string.not_sign) else user.email
     }
 }
