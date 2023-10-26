@@ -69,13 +69,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "Выбрано бытовая техника", Toast.LENGTH_SHORT).show()
             }
 
-            R.id.sign_in -> {
-                dialogHelper.createSignDialog(DialogConst.SIGN_IN_STATE)
-            }
+            R.id.sign_in -> dialogHelper.createSignDialog(DialogConst.SIGN_IN_STATE)
 
-            R.id.sign_up -> {
-                dialogHelper.createSignDialog(DialogConst.SIGN_UP_STATE)
-            }
+            R.id.sign_up -> dialogHelper.createSignDialog(DialogConst.SIGN_UP_STATE)
+
 
             R.id.sign_out -> {
                 myAuth.signOut()

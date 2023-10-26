@@ -5,8 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.landfathich.callboard.MainActivity
 import com.landfathich.callboard.R
 
-class AccountHelper(activity: MainActivity) {
-    private val activity = activity
+class AccountHelper(private val activity: MainActivity) {
     fun signUpWithEmail(email: String, password: String) {
         if (email.isNotEmpty() and password.isNotEmpty()) {
             activity.myAuth.createUserWithEmailAndPassword(email, password)
@@ -18,6 +17,23 @@ class AccountHelper(activity: MainActivity) {
                         Toast.makeText(
                             activity,
                             activity.getString(R.string.sign_up_error),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+        }
+    }
+
+    fun signInWithEmail(email: String, password: String) {
+        if (email.isNotEmpty() and password.isNotEmpty()) {
+            activity.myAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        activity.uiUpdate(task.result.user)
+                    } else {
+                        Toast.makeText(
+                            activity,
+                            activity.getString(R.string.sign_in_error),
                             Toast.LENGTH_LONG
                         ).show()
                     }

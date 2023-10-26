@@ -6,8 +6,7 @@ import com.landfathich.callboard.R
 import com.landfathich.callboard.accounthepler.AccountHelper
 import com.landfathich.callboard.databinding.SignDialogBinding
 
-class DialogHelper(activity: MainActivity) {
-    private val activity = activity
+class DialogHelper(private val activity: MainActivity) {
     private val accountHelper = AccountHelper(activity)
     fun createSignDialog(index: Int) {
         val builder = AlertDialog.Builder(activity)
@@ -32,7 +31,10 @@ class DialogHelper(activity: MainActivity) {
                     binding.etSignPassword.text.toString()
                 )
             } else {
-
+                accountHelper.signInWithEmail(
+                    binding.etSignEmail.text.toString(),
+                    binding.etSignPassword.text.toString()
+                )
             }
         }
 
