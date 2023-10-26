@@ -19,12 +19,15 @@
 
     <!-- Sign Dialog -->
     <string name="email_hint">Email</string>
+    <string name="email_reset_password_was_sent">Ссылка для сброса пароля была отправлена на почту</string>
     <string name="password_hint">Password</string>
     <string name="sign_in_action">Войти</string>
     <string name="sign_up_action">Зарегистрироваться</string>
     <string name="forget_password">Забыли пароль?</string>
     <string name="sign_up_error">Не удалось зарегистрироваться</string>
+    <string name="reset_password_error">Не удалось отправить ссылку для восстановления пароля по данному Email</string>
     <string name="sign_in_error">Не удалось войти</string>
     <string name="send_verification_email_error">Не удалось отправить письмо для подтверждения</string>
     <string name="send_verification_email_done">На вашу почту было отправлено письмо для подтверждения</string>
+    <string name="dialog_reset_email_message">Для восстановления пароля укажите Email адрес</string>
 </resources>
