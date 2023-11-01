@@ -49,6 +49,9 @@ dependencies {
     // для аутентификации
     implementation("com.google.firebase:firebase-auth:22.2.0")
 
+    // для аутентификации через google
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+
     // для хранения текста
     implementation("com.google.firebase:firebase-database:20.3.0")
 

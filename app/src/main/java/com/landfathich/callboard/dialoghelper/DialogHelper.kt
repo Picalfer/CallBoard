@@ -9,7 +9,7 @@ import com.landfathich.callboard.accounthepler.AccountHelper
 import com.landfathich.callboard.databinding.SignDialogBinding
 
 class DialogHelper(private val activity: MainActivity) {
-    private val accountHelper = AccountHelper(activity)
+    val accountHelper = AccountHelper(activity)
     fun createSignDialog(index: Int) {
         val builder = AlertDialog.Builder(activity)
         val binding = SignDialogBinding.inflate(activity.layoutInflater)
@@ -24,6 +24,9 @@ class DialogHelper(private val activity: MainActivity) {
         }
         binding.btnForgetPassword.setOnClickListener {
             setOnClickForgetPassword(binding, dialog)
+        }
+        binding.btnGoogleSignIn.setOnClickListener {
+            accountHelper.signInWithGoogle()
         }
 
         dialog.show()

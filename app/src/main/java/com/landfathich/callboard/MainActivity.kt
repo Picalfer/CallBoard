@@ -1,15 +1,20 @@
 package com.landfathich.callboard
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.landfathich.callboard.accounthepler.GoogleAccountConst
 import com.landfathich.callboard.databinding.ActivityMainBinding
 import com.landfathich.callboard.dialoghelper.DialogConst
 import com.landfathich.callboard.dialoghelper.DialogHelper
@@ -24,6 +29,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         init()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == GoogleAccountConst.GOOGLE_SIGN_IN_REQUEST_CODE) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                if (account != null) {
+                    dialogHelper.accountHelper.signInFirebaseWithGoogle(account.idToken!!)
+                }
+
+            } catch (e: ApiException) {
+                Log.d("TEST", "Api error : ${e.message}")
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onStart() {

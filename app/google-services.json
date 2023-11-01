@@ -12,7 +12,20 @@
           "package_name": "com.landfathich.callboard"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "785976875343-3rerfu48gmciqgivej3t7tugc24alnrg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.landfathich.callboard",
+            "certificate_hash": "385e91326ea400e3d0b4fd817456b9a2461cde1e"
+          }
+        },
+        {
+          "client_id": "785976875343-imic14rfp41vaj2v2l7896okca5mq1s0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC7dmjAW9UsIkvzvy26pHAv79hcDIGUmZA"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785976875343-imic14rfp41vaj2v2l7896okca5mq1s0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
