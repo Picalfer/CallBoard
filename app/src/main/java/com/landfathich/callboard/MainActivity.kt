@@ -97,6 +97,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             R.id.sign_out -> {
                 myAuth.signOut()
+                dialogHelper.accountHelper.signOutWithGoogle()
                 uiUpdate(null)
             }
         }
