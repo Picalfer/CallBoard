@@ -3,6 +3,7 @@ package com.landfathich.callboard
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.landfathich.callboard.accounthepler.GoogleAccountConst
+import com.landfathich.callboard.activity.EditAdsActivity
 import com.landfathich.callboard.databinding.ActivityMainBinding
 import com.landfathich.callboard.dialoghelper.DialogConst
 import com.landfathich.callboard.dialoghelper.DialogHelper
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun init() {
+        setSupportActionBar(binding.mainContent.toolbar)
         tvAccount = binding.navView.getHeaderView(0).findViewById(R.id.tv_account_email)
 
         val toggle = ActionBarDrawerToggle(
@@ -104,6 +107,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.new_ads) {
+            val intent = Intent(this, EditAdsActivity::class.java)
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun uiUpdate(user: FirebaseUser?) {
