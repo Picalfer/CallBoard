@@ -30,4 +30,6 @@
     <string name="send_verification_email_error">Не удалось отправить письмо для подтверждения</string>
     <string name="send_verification_email_done">На вашу почту было отправлено письмо для подтверждения</string>
     <string name="dialog_reset_email_message">Для восстановления пароля укажите Email адрес</string>
+    <string name="bind_done">Email привязан к Google аккаунту</string>
+    <string name="enter_google">У вас уже есть аккаунт с таким Email, войдите через Google</string>
 </resources>

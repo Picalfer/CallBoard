@@ -5,6 +5,7 @@ import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
@@ -24,13 +25,11 @@ class AccountHelper(private val activity: MainActivity) {
                         sendEmailVerification(task.result.user!!)
                         activity.uiUpdate(task.result.user)
                     } else {
-                        //Toast.makeText( activity, activity.getString(R.string.sign_up_error), Toast.LENGTH_LONG).show()
                         Log.d("TEST", "Exception: ${task.exception}")
                         if (task.exception is FirebaseAuthUserCollisionException) {
                             val exception = task.exception as FirebaseAuthUserCollisionException
                             if (exception.errorCode == FirebaseAuthConstants.ERROR_EMAIL_ALREADY_IN_USE) {
-                                Toast.makeText(activity, exception.errorCode, Toast.LENGTH_SHORT)
-                                    .show()
+                                bindEmailToGoogleAccount(email, password)
                             }
                         }
 
@@ -102,6 +101,19 @@ class AccountHelper(private val activity: MainActivity) {
             } else {
                 Log.d("TEST", "Google exception: ${task.exception}")
             }
+        }
+    }
+
+    private fun bindEmailToGoogleAccount(email: String, password: String) {
+        val credential = EmailAuthProvider.getCredential(email, password)
+        if (activity.myAuth.currentUser != null) {
+            activity.myAuth.currentUser?.linkWithCredential(credential)?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(activity, activity.getString(R.string.bind_done), Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            Toast.makeText(activity, activity.getString(R.string.enter_google), Toast.LENGTH_SHORT).show()
         }
     }
 
