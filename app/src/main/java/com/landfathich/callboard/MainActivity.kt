@@ -18,12 +18,12 @@ import com.google.firebase.auth.FirebaseUser
 import com.landfathich.callboard.accounthepler.GoogleAccountConst
 import com.landfathich.callboard.activity.EditAdsActivity
 import com.landfathich.callboard.databinding.ActivityMainBinding
-import com.landfathich.callboard.dialoghelper.DialogConst
-import com.landfathich.callboard.dialoghelper.DialogHelper
+import com.landfathich.callboard.dialoghelper.SignDialogConst
+import com.landfathich.callboard.dialoghelper.SignDialogHelper
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
-    private val dialogHelper = DialogHelper(this)
+    private val dialogHelper = SignDialogHelper(this)
     val myAuth = FirebaseAuth.getInstance()
     private lateinit var tvAccount: TextView
 
@@ -93,9 +93,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "Выбрано бытовая техника", Toast.LENGTH_SHORT).show()
             }
 
-            R.id.sign_in -> dialogHelper.createSignDialog(DialogConst.SIGN_IN_STATE)
+            R.id.sign_in -> dialogHelper.createSignDialog(SignDialogConst.SIGN_IN_STATE)
 
-            R.id.sign_up -> dialogHelper.createSignDialog(DialogConst.SIGN_UP_STATE)
+            R.id.sign_up -> dialogHelper.createSignDialog(SignDialogConst.SIGN_UP_STATE)
 
 
             R.id.sign_out -> {

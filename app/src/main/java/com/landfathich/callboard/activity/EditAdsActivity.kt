@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.landfathich.callboard.databinding.ActivityEditAdsBinding
+import com.landfathich.callboard.dialoghelper.SpinnerDialogHelper
 import com.landfathich.callboard.utils.CityHelper
 
 class EditAdsActivity : AppCompatActivity() {
@@ -12,12 +13,9 @@ class EditAdsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditAdsBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        val adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            CityHelper.getAllCountries(this)
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spCountry.adapter = adapter
+        val countryList = CityHelper.getAllCountries(this)
+
+        val dialog = SpinnerDialogHelper()
+        dialog.showSpinnerDialog(this, countryList)
     }
 }

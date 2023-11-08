@@ -8,7 +8,7 @@ import com.landfathich.callboard.R
 import com.landfathich.callboard.accounthepler.AccountHelper
 import com.landfathich.callboard.databinding.SignDialogBinding
 
-class DialogHelper(private val activity: MainActivity) {
+class SignDialogHelper(private val activity: MainActivity) {
     val accountHelper = AccountHelper(activity)
     fun createSignDialog(index: Int) {
         val builder = AlertDialog.Builder(activity)
@@ -58,7 +58,7 @@ class DialogHelper(private val activity: MainActivity) {
     }
 
     private fun setDialogState(index: Int, binding: SignDialogBinding) {
-        if (index == DialogConst.SIGN_UP_STATE) {
+        if (index == SignDialogConst.SIGN_UP_STATE) {
             binding.tvSignTitle.text = activity.getString(R.string.aс_sign_up)
             binding.btnSignUpIn.text = activity.getString(R.string.sign_up_action)
         } else {
@@ -70,7 +70,7 @@ class DialogHelper(private val activity: MainActivity) {
 
     private fun setOnClickSignUpIn(index: Int, binding: SignDialogBinding, dialog: AlertDialog?) {
         dialog?.dismiss()
-        if (index == DialogConst.SIGN_UP_STATE) {
+        if (index == SignDialogConst.SIGN_UP_STATE) {
             accountHelper.signUpWithEmail(
                 binding.etSignEmail.text.toString(),
                 binding.etSignPassword.text.toString()
