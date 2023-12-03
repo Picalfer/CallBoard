@@ -4,6 +4,7 @@ import android.content.Context
 import org.json.JSONObject
 import java.io.IOException
 import java.io.InputStream
+import java.util.Locale
 
 object CityHelper {
     fun getAllCountries(context: Context): ArrayList<String> {
@@ -28,5 +29,25 @@ object CityHelper {
 
         }
         return countries
+    }
+
+    fun filterListData(list: ArrayList<String>, searchText: String): ArrayList<String> {
+        val filteredList = ArrayList<String>()
+        filteredList.clear()
+
+        if (searchText == null) {
+            filteredList.add("No results found")
+            return filteredList
+        }
+
+        for (selection: String in list) {
+            if (selection.lowercase(Locale.ROOT).startsWith(searchText.lowercase(Locale.ROOT))) {
+                filteredList.add(selection)
+            }
+        }
+        if (filteredList.size == 0) {
+            filteredList.add("No results found")
+        }
+        return filteredList
     }
 }
