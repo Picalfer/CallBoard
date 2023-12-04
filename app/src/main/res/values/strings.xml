@@ -32,4 +32,8 @@
     <string name="dialog_reset_email_message">Для восстановления пароля укажите Email адрес</string>
     <string name="bind_done">Email привязан к Google аккаунту</string>
     <string name="enter_google">У вас уже есть аккаунт с таким Email, войдите через Google</string>
+
+    <!-- Edit Activity -->
+    <string name="select_country">Выберите страну</string>
+    <string name="select_city">Выберите город</string>
 </resources>
